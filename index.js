@@ -5,7 +5,7 @@ for (var i=0; i<document.querySelectorAll(".drum").length; i++) {
 	document.querySelectorAll(".drum")[i].addEventListener("click", function() {
 
 	makeSound(this.innerHTML);
-
+	buttonAnimator(this.innerHTML);
 	});	
 	
 }
@@ -13,6 +13,7 @@ for (var i=0; i<document.querySelectorAll(".drum").length; i++) {
 //Detect if a key is pressed
 document.addEventListener("keydown", function(event) {
 	makeSound(event.key);
+	buttonAnimator(event.key);
 })
 
 //Pslay the sound
@@ -57,3 +58,9 @@ function makeSound(key) {
 
 		}
 }
+
+function buttonAnimator(key) {
+	document.querySelector("." + key).classList.add("pressed")
+	setTimeout ( function () {document.querySelector("." + key).classList.remove("pressed");}, 100);
+}
+	
